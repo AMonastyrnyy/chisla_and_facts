@@ -32,6 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final focus = FocusNode();
   String fact = '';
 
+  //onPressed Первой кнопки
   void buttonFact() {
     focus.unfocus();
     if (controller.text == '') {
@@ -47,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  //onPressed Второй кнопки
   void buttonClean() {
     controller.clear();
     focus.requestFocus();
@@ -58,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      //Скрытие клавиатуры при нажатии в пустое место
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
@@ -69,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
+                //Поле ввода
                 TextField(
                   controller: controller,
                   focusNode: focus,
@@ -86,17 +90,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 const SizedBox(height: 15),
+                //Кнопки
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(onPressed: buttonFact, child: const Text('Поиск')),
+                    ElevatedButton(
+                        onPressed: buttonFact,
+                        child: const Text('Поиск')
+                    ),
                     const SizedBox(
                       width: 100,
                     ),
-                    ElevatedButton(onPressed: buttonClean, child: const Text('Очистить')),
+                    ElevatedButton(
+                        onPressed: buttonClean,
+                        child: const Text('Очистить')
+                    ),
                   ],
                 ),
                 const SizedBox(height: 15),
+                //Вывод ответа с API
                 Text(fact),
               ],
             ),
