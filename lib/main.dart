@@ -1,10 +1,23 @@
+import 'package:chisla_and_facts/bloc/fact_bloc.dart';
+import 'package:chisla_and_facts/repository/repository.dart';
+import 'package:chisla_and_facts/ui/main_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(
+      create: (BuildContext context) => FactBloc(Repository()),
+      child: const MaterialApp(home: MainScreen()),
+    ),
+  );
 }
+
+/*
+Старый код приложения
+
+import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -118,3 +131,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
