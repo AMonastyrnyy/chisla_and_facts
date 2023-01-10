@@ -8,7 +8,7 @@ void main() {
   runApp(
     BlocProvider(
       create: (BuildContext context) => FactBloc(Repository()),
-      child: const MaterialApp(home: MainScreen()),
+      child: MaterialApp(home: MainScreen()),
     ),
   );
 }
