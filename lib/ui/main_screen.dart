@@ -42,7 +42,6 @@ class _MainScreenState extends State<MainScreen> {
               onChanged: (value) {
                 setState(() {
                   themeState = value;
-
                 });
                 BlocProvider.of<ThemeBloc>(context).add(ThemeChanged());
               },
@@ -96,9 +95,9 @@ class _MainScreenState extends State<MainScreen> {
                   builder: (_, FactState state) {
                     switch (state.status) {
                       case ScreenStatus.error:
-                        return const Text('error');
+                        return const Text('ошибка');
                       case ScreenStatus.loading:
-                        return const Text('loading');
+                        return const Text('загрузка');
                       case ScreenStatus.unknown:
                         return const Text('Введите число');
                       case ScreenStatus.success:
